@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GOBOG Presale</title>
+  <meta name="description" content="Halaman presale GOBOG (GOBG) — connect wallet, approve USDT, buy, claim." />
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="icon" href="./assets/gobog.svg" />
+  <script src="https://unpkg.com/ethers@6.14.0/dist/ethers.umd.min.js"></script>
+</head>
+<body>
+  <header class="container header">
+    <div class="brand">
+      <img src="./assets/gobog.svg" alt="GOBOG" class="logo" />
+      <div>
+        <div class="brand-name">GOBOG Presale</div>
+        <div class="brand-sub">Symbol: <span class="mono">GOBG</span></div>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="./index.html">Home</a>
+      <a href="#" id="explorerPresale" target="_blank" rel="noreferrer">Explorer</a>
+      <a class="btn small" href="#" id="connectBtn">Connect</a>
+    </nav>
+  </header>
+
+  <main class="container section">
+    <div class="grid2">
+      <div class="card">
+        <h2>Status</h2>
+        <div class="kv">
+          <div>Network</div><div id="netName" class="mono">-</div>
+          <div>Wallet</div><div id="wallet" class="mono">-</div>
+          <div>USDT Balance</div><div id="usdtBal" class="mono">-</div>
+          <div>GOBG Claimable</div><div id="claimable" class="mono">-</div>
+          <div>Rate</div><div class="mono">1 USDT = 15 GOBG</div>
+          <div>Presale Ends</div><div id="ends" class="mono">-</div>
+        </div>
+
+        <hr class="sep"/>
+
+        <div class="small muted">
+          Kamu butuh sedikit BNB untuk gas. Approve dilakukan sekali sebelum buy.
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Buy</h2>
+        <label class="label">Jumlah USDT</label>
+        <input id="amt" class="input" placeholder="contoh: 10" inputmode="decimal" />
+
+        <div class="row">
+          <button class="btn" id="approveBtn">Approve USDT</button>
+          <button class="btn" id="buyBtn">Buy</button>
+        </div>
+
+        <div class="note small" id="estOut">Est. output: -</div>
+
+        <hr class="sep"/>
+
+        <h2>Claim</h2>
+        <button class="btn" id="claimBtn">Claim GOBG</button>
+
+        <hr class="sep"/>
+        <h2>Finalize</h2>
+        <p class="small muted">
+          Finalize hanya bisa dilakukan jika presale sudah selesai (waktu habis atau sold out).
+          Fungsi ini permissionless (siapa pun bisa panggil).
+        </p>
+        <button class="btn ghost" id="finalizeBtn">Finalize</button>
+      </div>
+    </div>
+
+    <div class="card section">
+      <h2>Console</h2>
+      <pre class="console" id="log"></pre>
+    </div>
+
+    <div class="small muted">
+      Jika error "estimateGas": biasanya belum approve, saldo USDT kurang, atau presale belum mulai/sudah berakhir.
+    </div>
+  </main>
+
+  <footer class="container footer">
+    <div class="small muted">GOBOG Presale UI • ethers v6</div>
+  </footer>
+
+  <script src="./app-config.js"></script>
+  <script src="./presale.js"></script>
+</body>
+</html>
